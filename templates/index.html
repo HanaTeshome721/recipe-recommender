@@ -1,11 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Recipe Recommender</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Recommender</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-  <h1>Welcome to Recipe Recommender 🍲</h1>
-  <p>Flask + MySQL app is working!</p>
+    <div class="container">
+        <header>
+            <h1>Welcome to Recipe Recommender 🍲</h1>
+        </header>
+        <nav style="padding: 20px;">
+            <a href="/signup" class="btn" style="margin-bottom: 20px;">Sign Up</a>
+            <a href="/login" class="btn">Login</a>
+        </nav>
+    </div>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 </html>

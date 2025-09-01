@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Recipes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f7f9;
+            color: #333;
+            margin: 0;
+            padding: 40px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .main-heading {
+            text-align: center;
+            color: #2c3e50;
+            font-weight: 600;
+            margin-bottom: 30px;
+        }
+
+        .recipe-card {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            padding: 25px;
+            margin-bottom: 25px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .recipe-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .recipe-card strong {
+            color: #3498db;
+            font-weight: 600;
+            font-size: 1.1em;
+        }
+        
+        .recipe-card pre {
+            background-color: #ecf0f1;
+            border-left: 4px solid #3498db;
+            padding: 15px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95em;
+            line-height: 1.6;
+            color: #555;
+            border-radius: 4px;
+            margin-top: 15px;
+            
+        }
+
+        .empty-state {
+            text-align: center;
+            color: #7f8c8d;
+            font-style: italic;
+            margin-top: 50px;
+        }
+        
+    </style>
+</head>
+<body>
+   <nav style="display: inline-block;">
+    <ul style="list-style-type: none; margin: 0; padding: 0; display: inline;">
+        <li style="display: inline; margin-right: 15px;"><a href="/ingredients" style="color: #007bff; text-decoration: none;">Pick Ingredients</a></li>
+        
+        <li style="display: inline;"><a href="/logout" style="color: #dc3545; text-decoration: none;">Logout</a></li>
+    </ul>
+</nav>
+    <div class="container">
+        <h2 class="main-heading">Your Recipes</h2>
+        {% for q in queries %}
+            <div class="recipe-card">
+                <strong>Ingredients:</strong> {{ q.query_text }}
+                <pre>{{ q.response_text or "No recipe returned. Check server logs." }}</pre>
+            </div>
+        {% else %}
+            <p class="empty-state">No recipes yet. Try generating one!</p>
+        {% endfor %}
+    </div>
+</body>
+</html>

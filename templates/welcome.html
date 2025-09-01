@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="user-profile-container">
+        <header class="user-profile-header">
+            <h1>Hello,{{ current_user.email}}!</h1>
+            <p>Welcome to your profile. From here you can manage your settings and explore new recipes!</p>
+        </header>
+        <nav class="profile-nav">
+            <a href="/ingredients" class="nav-button">Pick Ingredients</a>
+            <a href="/history" class="nav-button">History Ingredients</a>
+            <a href="/logout" class="nav-link">Logout</a>
+        </nav>
+    </div>
+</body>
+</html>

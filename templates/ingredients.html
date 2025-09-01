@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <title>Recipe Generator</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f0f4f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .card {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            width: 100%;
+            max-width: 500px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        .card-title {
+            color: #34495e;
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+        }
+
+        .card-body {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .checkbox-label {
+            display: block;
+            margin-bottom: 15px;
+            font-size: 1rem;
+            color: #555;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+
+        .checkbox-label:hover {
+            color: #007bff;
+        }
+
+        .checkbox-label input[type="checkbox"] {
+            margin-right: 10px;
+            transform: scale(1.1);
+            accent-color: #007bff;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 15px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #ffffff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+        
+        /* Hides the form and shows the result */
+        .card-form.hidden {
+            display: none;
+        }
+
+        .card-result {
+            display: none; /* Initially hide the result */
+            margin-top: 30px;
+            padding: 25px;
+            background-color: #ecf0f1;
+            border-radius: 8px;
+            text-align: left;
+        }
+
+        .card-result.visible {
+            display: block;
+        }
+
+        .card-result p {
+            line-height: 1.6;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <form method="POST" id="recipeForm" class="card-form">
+            <h2 class="card-title">Pick Ingredients</h2>
+            <div class="card-body">
+                <label class="checkbox-label"><input type="checkbox" name="ingredients" value="rice"> Rice</label><br>
+                <label class="checkbox-label"><input type="checkbox" name="ingredients" value="chicken"> Chicken</label><br>
+                <label class="checkbox-label"><input type="checkbox" name="ingredients" value="tomato"> Tomato</label><br>
+                <label class="checkbox-label"><input type="checkbox" name="ingredients" value="onion"> Onion</label><br>
+                <label class="checkbox-label"><input type="checkbox" name="ingredients" value="pepper"> Pepper</label><br>
+                <button type="submit" class="btn">Generate Recipe</button>
+            </div>
+        </form>
+
+        <div id="recipeResult" class="card-result">
+            <h2 class="card-title">Your Recipe</h2>
+            <p>{{ recipe }}</p>
+
+        </div>
+    </div>
+
+    <script>
+        // Get the form and result elements by their IDs
+        const form = document.getElementById('recipeForm');
+        const result = document.getElementById('recipeResult');
+
+        // Listen for the form submission
+        form.addEventListener('submit', function(event) {
+            // Prevent the default form submission which would refresh the page
+            event.preventDefault();
+
+            // Make the form hidden and the result visible
+            form.classList.add('hidden');
+            result.classList.add('visible');
+        });
+    </script>
+
+</body>
+</html>
