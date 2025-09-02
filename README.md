@@ -30,7 +30,7 @@ RESTful API endpoints tested with curl
 
 Clone repository
 
-git clone https://github.com/your-username/flask-user-api.git
+git clone 
 cd flask-user-api
 
 
